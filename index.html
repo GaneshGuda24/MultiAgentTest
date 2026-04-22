@@ -138,7 +138,7 @@
         </div>
         <aside class="about__stats">
           <div class="stat reveal"><strong data-count="6">0</strong><span>+ Months Experience</span></div>
-          <div class="stat reveal"><strong data-count="3">0</strong><span>Live Projects</span></div>
+          <div class="stat reveal"><strong data-count="2">0</strong><span>Live Projects</span></div>
           <div class="stat reveal"><strong data-count="200">0</strong><span>+ Test Cases Written</span></div>
           <div class="stat reveal"><strong data-count="120">0</strong><span>+ Bugs Logged</span></div>
         </aside>
@@ -226,138 +226,102 @@
       </header>
 
       <div class="projects__grid">
-        <!-- Project 1 -->
+        <!-- Project 1: CloudFuze Manage -->
         <article class="project-card reveal">
           <header class="project-card__head">
-            <span class="tag tag--api">API Testing</span>
-            <h3>Payments Gateway API Validation</h3>
+            <span class="tag tag--auto">Web &amp; API</span>
+            <h3>CloudFuze Manage</h3>
           </header>
           <p class="project-card__desc">
-            End-to-end validation of a REST-based payments gateway handling authorizations,
-            captures, refunds, and webhooks across <strong>35+ endpoints</strong>. Ensured
-            contract, functional, and negative scenarios were covered before every release.
+            Quality assurance for <strong>CloudFuze Manage</strong> &mdash; a centralized
+            multi-cloud management console that gives IT admins unified visibility and control
+            over users, storage, shared content, and activity across Google Workspace, Microsoft
+            365, OneDrive, SharePoint, Box, and Dropbox.
           </p>
           <div class="project-card__meta">
             <div>
               <h4>Responsibilities</h4>
               <ul>
-                <li>Authored 150+ API test cases for CRUD, auth, and error flows</li>
-                <li>Built reusable Postman collections with environments &amp; scripts</li>
-                <li>Validated JSON schemas, status codes, and response times</li>
-                <li>Ran data-driven tests with CSV inputs via Postman Runner</li>
+                <li>Tested admin dashboards, cloud-account on-boarding, and role-based access controls</li>
+                <li>Validated user, group, and permission reports across connected cloud tenants</li>
+                <li>Performed UI and API testing on content audit, sharing, and activity modules</li>
+                <li>Verified tenant-level policies, notifications, and scheduled report generation</li>
               </ul>
             </div>
             <div>
               <h4>Challenges</h4>
               <ul>
-                <li>Token-based auth expiring mid-suite &mdash; automated refresh with pre-request scripts</li>
-                <li>Intermittent 5xx errors under load &mdash; isolated to a downstream timeout</li>
+                <li>Cross-tenant OAuth flows with expiring tokens &mdash; scripted token refresh in Postman</li>
+                <li>Large report payloads timing out in the UI &mdash; reproduced, isolated, and tracked to pagination</li>
               </ul>
             </div>
             <div>
               <h4>Results</h4>
               <ul>
-                <li>Caught <strong>22 critical defects</strong> pre-production</li>
-                <li>Reduced regression cycle from 2 days to <strong>4 hours</strong></li>
+                <li>Caught <strong>30+ functional and data-consistency defects</strong> pre-release</li>
+                <li>Stabilized admin reports and authorization flows across all supported clouds</li>
               </ul>
             </div>
           </div>
           <footer class="project-card__foot">
+            <span class="chip chip--sm">Manual</span>
             <span class="chip chip--sm">Postman</span>
-            <span class="chip chip--sm">REST</span>
-            <span class="chip chip--sm">JSON Schema</span>
+            <span class="chip chip--sm">REST APIs</span>
+            <span class="chip chip--sm">OAuth 2.0</span>
             <span class="chip chip--sm">Jira</span>
-            <span class="chip chip--sm">Swagger</span>
-          </footer>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card reveal">
-          <header class="project-card__head">
-            <span class="tag tag--auto">Automation</span>
-            <h3>E-commerce Web Automation Suite</h3>
-          </header>
-          <p class="project-card__desc">
-            Built a Selenium + TestNG automation framework covering the critical user journey of
-            an e-commerce web app &mdash; search, add to cart, checkout, and order history &mdash; executed
-            nightly as part of regression.
-          </p>
-          <div class="project-card__meta">
-            <div>
-              <h4>Responsibilities</h4>
-              <ul>
-                <li>Designed Page Object Model (POM) structure for maintainability</li>
-                <li>Implemented data-driven tests via TestNG <code>@DataProvider</code></li>
-                <li>Integrated ExtentReports for HTML execution dashboards</li>
-                <li>Parameterized cross-browser runs (Chrome &amp; Edge)</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Challenges</h4>
-              <ul>
-                <li>Flaky waits on dynamic elements &mdash; replaced with explicit waits &amp; fluent waits</li>
-                <li>Test data collisions &mdash; added cleanup hooks in <code>@AfterMethod</code></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Results</h4>
-              <ul>
-                <li>Automated <strong>40+ regression cases</strong>, saving ~6 hrs per cycle</li>
-                <li>Stabilized suite to <strong>98% pass rate</strong> over 30 consecutive runs</li>
-              </ul>
-            </div>
-          </div>
-          <footer class="project-card__foot">
-            <span class="chip chip--sm">Selenium</span>
-            <span class="chip chip--sm">Java</span>
-            <span class="chip chip--sm">TestNG</span>
-            <span class="chip chip--sm">Maven</span>
-            <span class="chip chip--sm">ExtentReports</span>
-          </footer>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card reveal">
-          <header class="project-card__head">
-            <span class="tag tag--cloud">Cloud</span>
-            <h3>Google Workspace Migration QA</h3>
-          </header>
-          <p class="project-card__desc">
-            Quality validation for a cloud-to-cloud migration platform moving data from
-            <strong>Google Workspace</strong> (Drive, Gmail, Calendar, Contacts) to Microsoft 365.
-            Focused on data integrity, permissions, and delta-migration scenarios.
-          </p>
-          <div class="project-card__meta">
-            <div>
-              <h4>Responsibilities</h4>
-              <ul>
-                <li>Executed functional, regression, and UAT test cycles across 4 releases</li>
-                <li>Validated file counts, folder hierarchies, and shared permissions post-migration</li>
-                <li>Verified delta/incremental runs picked up only new &amp; modified items</li>
-                <li>Logged, triaged, and retested defects in Jira with clear reproduction steps</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Challenges</h4>
-              <ul>
-                <li>Throttling from provider APIs &mdash; coordinated with dev on retry/backoff fixes</li>
-                <li>Large datasets (100K+ files) &mdash; designed sampling + checksum validation</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Results</h4>
-              <ul>
-                <li>Achieved <strong>99.9% data integrity</strong> across validated migrations</li>
-                <li>Helped release <strong>4 production builds</strong> with zero rollback</li>
-              </ul>
-            </div>
-          </div>
-          <footer class="project-card__foot">
             <span class="chip chip--sm">Google Workspace</span>
             <span class="chip chip--sm">Microsoft 365</span>
+          </footer>
+        </article>
+
+        <!-- Project 2: CloudFuze Migrate (Content Migration) -->
+        <article class="project-card reveal">
+          <header class="project-card__head">
+            <span class="tag tag--cloud">Cloud Migration</span>
+            <h3>CloudFuze Migrate &mdash; Content Migration</h3>
+          </header>
+          <p class="project-card__desc">
+            QA for <strong>CloudFuze Migrate</strong>, an enterprise-grade cloud-to-cloud content
+            migration platform that moves files, folders, permissions, shares, and metadata between
+            Google Drive, OneDrive, SharePoint, Box, Dropbox, and Egnyte &mdash; at scale, with
+            full-fidelity and delta/incremental support.
+          </p>
+          <div class="project-card__meta">
+            <div>
+              <h4>Responsibilities</h4>
+              <ul>
+                <li>Executed functional, regression, sanity, and UAT test cycles across sprint releases</li>
+                <li>Validated file counts, folder hierarchies, shared permissions, and ownership post-migration</li>
+                <li>Verified delta/incremental runs picked up only new and modified items</li>
+                <li>Tested large-scale migration jobs, job queues, retry logic, and failure-reporting</li>
+                <li>Logged, triaged, and retested defects in Jira with clear reproduction steps and evidence</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Challenges</h4>
+              <ul>
+                <li>Provider API throttling &amp; rate limits &mdash; coordinated with dev on retry/backoff validation</li>
+                <li>Large datasets (100K+ files) &mdash; designed sampling + checksum-based integrity checks</li>
+                <li>Permission mapping across dissimilar cloud models &mdash; authored edge-case test scenarios</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Results</h4>
+              <ul>
+                <li>Achieved <strong>99.9% data integrity</strong> across validated customer migrations</li>
+                <li>Supported multiple production releases with <strong>zero rollbacks</strong></li>
+              </ul>
+            </div>
+          </div>
+          <footer class="project-card__foot">
+            <span class="chip chip--sm">Manual</span>
+            <span class="chip chip--sm">API Testing</span>
             <span class="chip chip--sm">Postman</span>
             <span class="chip chip--sm">Jira</span>
-            <span class="chip chip--sm">SQL</span>
+            <span class="chip chip--sm">Google Workspace</span>
+            <span class="chip chip--sm">Microsoft 365</span>
+            <span class="chip chip--sm">SharePoint</span>
+            <span class="chip chip--sm">Box / Dropbox</span>
           </footer>
         </article>
       </div>
