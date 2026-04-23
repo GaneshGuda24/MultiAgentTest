@@ -2,94 +2,346 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ganesh Guda — QA Engineer Resume</title>
+<meta name="description" content="Resume of Ganesh Guda — QA Engineer with experience in Manual Testing, API Testing, and Automation using Selenium, Postman, Java, TestNG, and Jira." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  @page { margin: 18mm; }
-  body { font-family: "Inter", Arial, sans-serif; color: #111; max-width: 820px; margin: 24px auto; padding: 0 24px; line-height: 1.5; }
-  h1 { margin: 0 0 4px; font-size: 28px; }
-  .meta { color: #555; font-size: 14px; margin-bottom: 18px; }
-  h2 { border-bottom: 2px solid #2563eb; color: #2563eb; padding-bottom: 4px; margin-top: 26px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em; }
-  h3 { margin: 10px 0 2px; font-size: 15px; }
-  .date { float: right; color: #555; font-size: 13px; }
-  ul { margin: 6px 0 10px 20px; padding: 0; }
-  li { margin-bottom: 4px; font-size: 14px; }
-  .tools { font-size: 13px; color: #444; }
-  .print-hint { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 8px; margin-bottom: 18px; font-size: 13px; }
-  @media print { .print-hint { display: none; } }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; font-size: 14px; }
-  .grid strong { color: #111; }
+  /* ---------- Reset / Base ---------- */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #111;
+    background: #e9edf5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: #1d4ed8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul { margin: 6px 0 10px 18px; padding: 0; }
+  li { margin-bottom: 4px; }
+
+  /* ---------- Toolbar (screen only) ---------- */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 18px;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-size: 13px;
+  }
+  .toolbar .hint { color: #94a3b8; font-size: 12px; }
+  .toolbar .actions { display: flex; gap: 8px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #2563eb;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    font: 600 13px "Inter", Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: #e2e8f0; border: 1px solid #334155; }
+  .btn.ghost:hover { background: #1e293b; color: #fff; }
+
+  /* ---------- Page (screen preview) ---------- */
+  .page {
+    max-width: 820px;
+    margin: 28px auto;
+    background: #fff;
+    padding: 44px 52px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    border-radius: 4px;
+  }
+
+  /* ---------- Header ---------- */
+  header.head { border-bottom: 2px solid #2563eb; padding-bottom: 14px; margin-bottom: 18px; }
+  header.head h1 {
+    margin: 0 0 2px;
+    font-size: 28pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: #0f172a;
+  }
+  header.head .title {
+    margin: 0 0 10px;
+    font-size: 12pt;
+    font-weight: 500;
+    color: #2563eb;
+    letter-spacing: 0.01em;
+  }
+  header.head .contact {
+    margin: 0;
+    font-size: 10.5pt;
+    color: #334155;
+  }
+  header.head .contact a { color: #1d4ed8; }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 18px; }
+  section h2 {
+    font-size: 11.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #cbd5e1;
+  }
+  p { margin: 0 0 8px; }
+
+  /* ---------- Skill groups ---------- */
+  .skills-row {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 4px 14px;
+    font-size: 10.5pt;
+  }
+  .skills-row dt { font-weight: 600; color: #0f172a; }
+  .skills-row dd { margin: 0; color: #334155; }
+
+  /* ---------- Experience / Project entries ---------- */
+  .entry { margin-bottom: 12px; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .entry-head h3 { margin: 0; font-size: 11.5pt; font-weight: 700; color: #0f172a; }
+  .entry-head .meta { font-size: 10.5pt; color: #475569; font-weight: 500; }
+  .entry-sub {
+    margin: 2px 0 6px;
+    font-size: 10.5pt;
+    color: #2563eb;
+    font-weight: 600;
+  }
+  .entry p, .entry ul { font-size: 10.5pt; color: #1f2937; }
+  .tools {
+    margin: 4px 0 0;
+    font-size: 10pt;
+    color: #475569;
+  }
+  .tools strong { color: #0f172a; }
+
+  /* ---------- Print styles (ATS-friendly PDF) ---------- */
+  @page { size: A4; margin: 14mm 16mm; }
+  @media print {
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; color: #000; }
+    .toolbar, .no-print { display: none !important; }
+    .page {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    a { color: #000; text-decoration: none; }
+    header.head { border-bottom: 1.5pt solid #000; }
+    header.head h1 { color: #000; }
+    header.head .title { color: #000; font-weight: 600; }
+    section h2 { color: #000; border-bottom-color: #000; }
+    .entry-head h3, .skills-row dt { color: #000; }
+    .entry-sub { color: #000; }
+    .tools, .entry-head .meta, .skills-row dd, p, li { color: #000; }
+    section { break-inside: avoid; }
+    .entry { break-inside: avoid; }
+  }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 720px) {
+    .page { padding: 28px 22px; margin: 12px; }
+    .skills-row { grid-template-columns: 1fr; }
+    .skills-row dt { margin-top: 6px; }
+    .entry-head { flex-direction: column; }
+    .entry-head .meta { margin-top: 2px; }
+  }
 </style>
 </head>
 <body>
-  <div class="print-hint">
-    Tip: Use your browser's <strong>Print &rarr; Save as PDF</strong> to export this resume as a PDF.
+
+<!-- Toolbar (hidden in print) -->
+<div class="toolbar no-print">
+  <span class="hint">Tip: click <strong>Save as PDF</strong> &rarr; in the dialog, choose <strong>Save as PDF</strong> as destination. The output is ATS-friendly.</span>
+  <div class="actions">
+    <button class="btn" onclick="window.print()">&#128190; Save as PDF</button>
+    <a class="btn ghost" href="../index.html">&larr; Back to Portfolio</a>
   </div>
+</div>
 
-  <h1>Ganesh Guda</h1>
-  <div class="meta">
-    QA Engineer &middot; Manual, API &amp; Automation Testing<br />
-    ganesh.guda@cloudfuze.com &middot; LinkedIn: /in/your-handle &middot; GitHub: /your-handle
-  </div>
+<main class="page" role="main">
 
-  <h2>Professional Summary</h2>
-  <p>
-    QA Engineer with 6+ months of hands-on experience in Manual Testing, API Testing with Postman,
-    and Automation fundamentals using Selenium, Java, and TestNG. Strong at designing test cases,
-    validating REST APIs, tracking defects in Jira, and collaborating with developers in Agile teams
-    to deliver reliable software.
-  </p>
+  <!-- ==================== HEADER ==================== -->
+  <header class="head">
+    <h1>Ganesh Guda</h1>
+    <p class="title">QA Engineer &mdash; Manual, API &amp; Automation Testing</p>
+    <p class="contact">
+      <a href="mailto:ganesh.guda@cloudfuze.com">ganesh.guda@cloudfuze.com</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/your-handle</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://github.com/" target="_blank" rel="noopener">github.com/your-handle</a>
+      &nbsp;&bull;&nbsp;
+      Hyderabad, India
+    </p>
+  </header>
 
-  <h2>Core Skills</h2>
-  <div class="grid">
-    <div><strong>Testing:</strong> Manual, API, Regression, Sanity, Smoke, UAT</div>
-    <div><strong>Automation:</strong> Selenium WebDriver, TestNG, POM, Data-Driven</div>
-    <div><strong>Tools:</strong> Postman, Jira, Maven, Git, Chrome DevTools, Swagger</div>
-    <div><strong>Languages:</strong> Java, SQL, HTML/CSS (basics), JavaScript (basics)</div>
-    <div><strong>Process:</strong> Agile/Scrum, Test Case Design, Bug Triage, RCA</div>
-    <div><strong>Other:</strong> CI/CD basics, Cross-browser testing, Debugging</div>
-  </div>
+  <!-- ==================== SUMMARY ==================== -->
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      QA Engineer with <strong>6+ months</strong> of hands-on experience in <strong>Manual Testing,
+      API Testing, and Automation</strong> for enterprise cloud products. Proven ability to design
+      test cases from requirements, validate REST APIs with Postman, build Selenium + TestNG
+      automation scripts, and track defects in Jira. Strong analytical and debugging skills,
+      quick to pick up new tools, and comfortable collaborating with developers in
+      <strong>Agile/Scrum</strong> teams to deliver reliable, production-ready releases.
+    </p>
+  </section>
 
-  <h2>Experience</h2>
-  <h3>QA Engineer &mdash; CloudFuze <span class="date">Oct 2025 &mdash; Present</span></h3>
-  <ul>
-    <li>Execute API, UI, Regression, Sanity, and UAT testing across sprint releases.</li>
-    <li>Author detailed test cases and scenarios from requirements, user stories, and API specs.</li>
-    <li>Validate REST APIs in Postman &mdash; auth flows, status codes, payload schemas, and edge cases.</li>
-    <li>Build and maintain Selenium + TestNG automation scripts for repeatable regression paths.</li>
-    <li>Log, prioritize, and triage defects in Jira; verify fixes and close with evidence.</li>
-    <li>Participate in Agile/Scrum ceremonies and collaborate with developers on root-cause analysis.</li>
-    <li>Support release readiness through smoke/sanity checks on staging and production builds.</li>
-  </ul>
+  <!-- ==================== CORE SKILLS (ATS keyword line) ==================== -->
+  <section>
+    <h2>Core Skills</h2>
+    <p>
+      Manual Testing, Functional Testing, Regression Testing, Sanity Testing, Smoke Testing, UAT,
+      API Testing, REST API, Postman, Swagger, JSON, OAuth 2.0, Selenium WebDriver, TestNG,
+      Page Object Model (POM), Data-Driven Testing, Cross-browser Testing, Java, SQL, Maven,
+      Git, GitHub, Jira, Confluence, Agile, Scrum, SDLC, STLC, Defect Lifecycle, Root Cause Analysis,
+      Test Case Design, Bug Triage, CI/CD (basics).
+    </p>
+  </section>
 
-  <h2>Projects</h2>
+  <!-- ==================== TECHNICAL SKILLS ==================== -->
+  <section>
+    <h2>Technical Skills</h2>
+    <dl class="skills-row">
+      <dt>Testing Types</dt>
+      <dd>Manual, Functional, Regression, Sanity, Smoke, UAT, Integration, API, UI</dd>
 
-  <h3>CloudFuze Manage</h3>
-  <ul>
-    <li>QA for a centralized multi-cloud management console that gives IT admins unified visibility and control over users, storage, shared content, and activity across Google Workspace, Microsoft 365, OneDrive, SharePoint, Box, and Dropbox.</li>
-    <li>Tested admin dashboards, cloud-account on-boarding, and role-based access controls.</li>
-    <li>Validated user, group, and permission reports across connected cloud tenants.</li>
-    <li>Performed UI and API testing on content audit, sharing, and activity modules.</li>
-    <li>Verified tenant-level policies, notifications, and scheduled report generation.</li>
-    <li>Caught 30+ functional and data-consistency defects pre-release; stabilized admin reports and authorization flows.</li>
-  </ul>
-  <p class="tools"><strong>Tools:</strong> Manual, Postman, REST APIs, OAuth 2.0, Jira, Google Workspace, Microsoft 365</p>
+      <dt>Test Design</dt>
+      <dd>Test case design, boundary value, equivalence partitioning, negative testing, exploratory</dd>
 
-  <h3>CloudFuze Migrate &mdash; Content Migration</h3>
-  <ul>
-    <li>QA for an enterprise cloud-to-cloud content migration platform moving files, folders, permissions, shares, and metadata between Google Drive, OneDrive, SharePoint, Box, Dropbox, and Egnyte &mdash; with full-fidelity and delta/incremental support.</li>
-    <li>Executed functional, regression, sanity, and UAT test cycles across sprint releases.</li>
-    <li>Validated file counts, folder hierarchies, shared permissions, and ownership post-migration.</li>
-    <li>Verified delta/incremental runs picked up only new and modified items; tested job queues, retry logic, and failure reporting.</li>
-    <li>Designed sampling + checksum-based integrity checks for 100K+ file datasets; triaged defects in Jira.</li>
-    <li>Achieved 99.9% data integrity across validated migrations; supported multiple production releases with zero rollback.</li>
-  </ul>
-  <p class="tools"><strong>Tools:</strong> Manual, API Testing, Postman, Jira, Google Workspace, Microsoft 365, SharePoint, Box, Dropbox</p>
+      <dt>API Testing</dt>
+      <dd>Postman (collections, environments, scripts, Runner), REST, JSON schema validation, OAuth 2.0, Swagger</dd>
 
-  <h2>Certifications</h2>
-  <ul>
-    <li>Software Testing Foundations &mdash; SDLC, STLC, test design, defect lifecycle.</li>
-    <li>API Testing with Postman &mdash; collections, assertions, environments, Newman.</li>
-    <li>Selenium with Java &amp; TestNG &mdash; WebDriver, POM, data-driven testing, reporting.</li>
-  </ul>
+      <dt>Automation</dt>
+      <dd>Selenium WebDriver, TestNG, Page Object Model (POM), @DataProvider, Maven, ExtentReports</dd>
+
+      <dt>Programming</dt>
+      <dd>Java (core, OOP), SQL (joins, DML, queries), HTML/CSS (basics), JavaScript (basics)</dd>
+
+      <dt>Tools &amp; Tracking</dt>
+      <dd>Jira, Confluence, Git, GitHub, Chrome DevTools, Postman, Maven</dd>
+
+      <dt>Processes</dt>
+      <dd>Agile / Scrum, SDLC, STLC, defect lifecycle, bug triage, root-cause analysis, CI/CD basics</dd>
+    </dl>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>QA Engineer</h3>
+        <span class="meta">Oct 2025 &mdash; Present</span>
+      </div>
+      <p class="entry-sub">CloudFuze &middot; Hyderabad, India</p>
+      <ul>
+        <li>Execute <strong>API, UI, Regression, Sanity, and UAT</strong> testing across sprint releases for enterprise cloud-migration products.</li>
+        <li>Author detailed test cases and scenarios from requirements, user stories, and API specifications.</li>
+        <li>Validate REST APIs in <strong>Postman</strong> &mdash; authentication flows, HTTP status codes, payload schemas, response times, and negative scenarios.</li>
+        <li>Build and maintain <strong>Selenium + TestNG</strong> automation scripts using Page Object Model for repeatable regression paths.</li>
+        <li>Log, prioritize, and triage defects in <strong>Jira</strong>; verify fixes and close with evidence and regression impact.</li>
+        <li>Participate in <strong>Agile/Scrum</strong> ceremonies &mdash; standups, grooming, sprint reviews, and retrospectives.</li>
+        <li>Collaborate with developers to reproduce issues, pair on root-cause analysis, and unblock releases.</li>
+        <li>Support release readiness through smoke and sanity checks on staging and production builds.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section>
+    <h2>Key Projects</h2>
+
+    <div class="entry">
+      <h3>CloudFuze Manage</h3>
+      <p class="entry-sub">Multi-cloud Management Platform &middot; Web &amp; API</p>
+      <ul>
+        <li>Quality assurance for a centralized multi-cloud management console giving IT admins unified visibility and control over users, storage, shared content, and activity across <strong>Google Workspace, Microsoft 365, OneDrive, SharePoint, Box, and Dropbox</strong>.</li>
+        <li>Tested admin dashboards, cloud-account on-boarding, and role-based access controls (RBAC).</li>
+        <li>Validated user, group, and permission reports across connected cloud tenants.</li>
+        <li>Performed UI and API testing on content audit, sharing, and activity modules.</li>
+        <li>Verified tenant-level policies, notifications, and scheduled report generation.</li>
+        <li>Caught <strong>30+ functional and data-consistency defects</strong> pre-release; stabilized admin reports and authorization flows across all supported clouds.</li>
+      </ul>
+      <p class="tools"><strong>Tools:</strong> Manual Testing, Postman, REST APIs, OAuth 2.0, Jira, Google Workspace, Microsoft 365</p>
+    </div>
+
+    <div class="entry">
+      <h3>CloudFuze Migrate &mdash; Content Migration</h3>
+      <p class="entry-sub">Cloud-to-Cloud Migration Platform &middot; API &amp; Data Integrity</p>
+      <ul>
+        <li>QA for an enterprise-grade cloud-to-cloud content migration platform moving files, folders, permissions, shares, and metadata between <strong>Google Drive, OneDrive, SharePoint, Box, Dropbox, and Egnyte</strong> with full-fidelity and delta/incremental support.</li>
+        <li>Executed functional, regression, sanity, and UAT test cycles across sprint releases.</li>
+        <li>Validated file counts, folder hierarchies, shared permissions, and ownership post-migration.</li>
+        <li>Verified delta/incremental runs picked up only new and modified items; tested job queues, retry logic, and failure reporting.</li>
+        <li>Designed sampling + checksum-based integrity checks for <strong>100K+ file datasets</strong>; triaged defects in Jira with reproduction steps and evidence.</li>
+        <li>Achieved <strong>99.9% data integrity</strong> across validated customer migrations; supported multiple production releases with zero rollbacks.</li>
+      </ul>
+      <p class="tools"><strong>Tools:</strong> Manual Testing, API Testing, Postman, Jira, Google Workspace, Microsoft 365, SharePoint, Box, Dropbox</p>
+    </div>
+  </section>
+
+  <!-- ==================== CERTIFICATIONS ==================== -->
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li><strong>Software Testing Foundations</strong> &mdash; SDLC, STLC, test design techniques, defect lifecycle.</li>
+      <li><strong>API Testing with Postman</strong> &mdash; collections, assertions, environments, pre-request scripts, Newman.</li>
+      <li><strong>Selenium with Java &amp; TestNG</strong> &mdash; WebDriver, Page Object Model, data-driven testing, reporting.</li>
+    </ul>
+  </section>
+
+  <!-- ==================== EDUCATION ==================== -->
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Bachelor's Degree</h3>
+        <span class="meta">Year of graduation</span>
+      </div>
+      <p class="entry-sub">Your University Name &middot; City, State</p>
+      <!-- TODO: Replace the placeholder above with your actual institution, degree, and graduation year. -->
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Nudge the page title so saved PDF defaults to a clean filename.
+  document.title = "Ganesh_Guda_QA_Engineer_Resume";
+</script>
 </body>
 </html>
